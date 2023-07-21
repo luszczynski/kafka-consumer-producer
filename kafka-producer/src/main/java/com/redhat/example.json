@@ -1,0 +1,12 @@
+{
+    "request": {
+        "rawRequestHeader": {
+            "accept": "application/json,application/json"
+        }
+    },
+    "response": {
+        "rawResponseBody": {
+            "payload": "my data"
+        }
+    }
+}
