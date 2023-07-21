@@ -60,6 +60,9 @@ public class KafkaProducerStartup {
     @ConfigProperty(name = "kafka.message.key")
     String messageKey;
 
+    @ConfigProperty(name = "departamento")
+    String departamento;
+
     private final Random random = new Random();
 
     @PostConstruct
@@ -93,8 +96,8 @@ public class KafkaProducerStartup {
 
     private KafkaMessage generateMessage() {
         KafkaMessage message = new KafkaMessage();
-        message.request.rawRequestHeader.accept = "application/json,application/json";
-        message.response.rawResponseBody.payload = "my data " + random.nextInt();
+        message.payload = "my data " + random.nextInt();
+        message.departamento = departamento;
         return message;
     }
 }
