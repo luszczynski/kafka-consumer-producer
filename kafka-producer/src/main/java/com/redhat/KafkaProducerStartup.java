@@ -16,10 +16,13 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
+import org.jboss.logging.Logger;
 
 @Startup
 @Singleton
 public class KafkaProducerStartup {
+
+    private static final Logger LOGGER = Logger.getLogger(KafkaProducerStartup.class.getName());
 
     @Inject
     Producer<String, String> producer;
@@ -78,6 +81,7 @@ public class KafkaProducerStartup {
                 throw new RuntimeException(e);
             }
 
+            LOGGER.infof("==> Produzindo mensagem no tópico = %s, key = %s, value = %s",topic,key,value);
             producer.send(new ProducerRecord<>(topic, key, value));
 
             if (throughput > 0) {
