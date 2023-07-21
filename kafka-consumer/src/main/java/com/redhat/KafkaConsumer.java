@@ -24,8 +24,5 @@ public class KafkaConsumer {
             int partition = record.partition();
             LOGGER.infof("==> Mensagem: Key = %s, Payload = %s, Departamento = %s, Topic = %s, Partition = %d", key, value.payload, value.departamento, topic, partition);
         }
-        else {
-            LOGGER.infof("==> Mensagem do departamento %s omitida por questões de segurança", value.departamento);
-        }
     }
 }
